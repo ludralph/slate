@@ -1,239 +1,87 @@
 ---
-title: API Reference
+title: PostIt API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
-  - shell
-  - ruby
-  - python
   - javascript
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/lord/slate'>Documentation Powered by Slate</a>
+  - <a href='https://github.com/ludralph/PostIt-Raphael-Etim'> &copy PostIt API by Raphael Etim</a>
 
 includes:
+  - users
+  - groups
   - errors
 
 search: true
 ---
 
 # Introduction
+Welcome to the PostIt API - A RESTful web service that allow users create accounts, create groups, add users to groups and post messages to created groups. The Postit API is organized around REST. Our API has predictable, resource-oriented URLs, and uses HTTP response codes to indicate API errors. We use JSON Web Tokens (JWT) for authentication and HTTP verbs, which are understood by off-the-shelf HTTP clients. JSON is returned by all API responses, including errors. this documentation will get you started on how you can easily consume this API. To consume this API, your stack should definitely be Javascript as we are yet to cover other languages. You can view code examples in the dark area to the right.
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+>Base API Endpoint
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+```
+https://postit-app-ralph.herokuapp.com/api
 
-This example API documentation page was created with [Slate](https://github.com/lord/slate). Feel free to edit it and use it as a base for your own API's documentation.
+```
+
+# Development
+
+PostIt application was built with Node.js running express server. Postgres is the database used for the application and sequelize is the ORM used for connecting to the database.
+
+# Installation
+
+To test out the endpoints in this API documentation, you need to set up your working environment locally. Follow the steps below to get you started.
+First, get Node.js v6.11.0 or later installed in your machine Ensure you have postgres installed also. Clone the github repo and run this command in your terminal, `git clone https://github.com/ludralph/PostIt-Raphael-Etim.git`. After cloning, run the command `cd PostIt-Raphael-Etim` to be in the project directory. Setup your database url in the .env file. Also run `npm install` to install all the npm package dependencies. Finally, to get the app running, start up the server with the command `npm start`.
 
 # Authentication
+PostIt uses (username and password) fields to allow users access to the API protected routes. On registering or login, a token is generated.
 
-> To authorize, use this code:
+PostIt expects for the token to be included in all API requests to the server in a header that looks like the following:
 
-```ruby
-require 'kittn'
+Authorization: **token**.
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+Some endpoints (routes) in this API are protected. They require an access token (x-auth) in the request headers. You can get this token when you signup as a new user or login as existing user.
+<aside class="notice">You must replace YOUR_AUTH_TOKEN with our own x-auth token, which the server sends back in the response headers when you sign up or sign in.</aside>
 
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
+> To authorize requests to protected endpoints, set the x-auth token in the request header like this:
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "x-auth":"YOUR_AUTH_KEY"
 }
+
 ```
 
-This endpoint retrieves a specific kitten.
+# Endpoints Summary
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+Base Endpoint: `https://postit-app-ralph.herokuapp.com/api`
 
-### HTTP Request
+The endpoints for the listed routes should be appended to the base endpoint to get the full endpoint.
 
-`GET http://example.com/kittens/<ID>`
+### User Routes
 
-### URL Parameters
+Feature | Request type | Endpoint
+--------| -------- | --------
+Sign up | POST     | '/signup'
+Sign in | POST     | '/signin'
+Get User groups | GET | '/user/:userId/groups'
+Search Users | GET | '/search/users'
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+### Recovery Routes
+ 
+Feature | Request type | Endpoint
+--------| -------- | --------
+Forgot Password | PUT | '/forgotpassword'
+Reset Passwprd | PUT | '/resetpassword/:token'
 
-## Delete a Specific Kitten
+### Group Routes
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "deleted" : ":("
-}
-```
-
-This endpoint deletes a specific kitten.
-
-### HTTP Request
-
-`DELETE http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
-
+Feature | Request type | Endpoint
+--------| -------- | --------
+Create new Group | POST | '/group'
+Add user to Group | POST | '/group/:groupId/user'
+Get Group Users | GET | '/group/:groupId/users'
+Post New Message | POST | '/group/:groupId/message'
+Get Group Messages | GET | '/group/:groupId/messages'

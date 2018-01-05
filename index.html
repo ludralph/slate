@@ -254,7 +254,7 @@
                     <a href="#signin-user" class="toc-h2 toc-link" data-title="Signin user">Signin user</a>
                   </li>
                   <li>
-                    <a href="#get-user-39-s-groups" class="toc-h2 toc-link" data-title="Get User's Groups">Get User's Groups</a>
+                    <a href="#get-groups-a-user-belongs-to" class="toc-h2 toc-link" data-title="Get groups a user belongs to">Get groups a user belongs to</a>
                   </li>
                   <li>
                     <a href="#search-users" class="toc-h2 toc-link" data-title="Search Users">Search Users</a>
@@ -308,7 +308,7 @@
 <blockquote>
 <p>Base API Endpoint</p>
 </blockquote>
-<pre class="highlight plaintext"><code>https://postit-app-ralph.herokuapp.com/api
+<pre class="highlight plaintext"><code>https://postit-app-ralph.herokuapp.com/api/v1
 
 </code></pre><h1 id='development'>Development</h1>
 <p>PostIt application was built with Node.js running express server. Postgres is the database used for the application and sequelize is the ORM used for connecting to the database.</p>
@@ -333,7 +333,7 @@ First, get Node.js v6.11.0 or later installed in your machine Ensure you have po
 <span class="p">}</span>
 
 </code></pre><h1 id='endpoints-summary'>Endpoints Summary</h1>
-<p>Base Endpoint: <code>https://postit-app-ralph.herokuapp.com/api</code></p>
+<p>Base Endpoint: <code>https://postit-app-ralph.herokuapp.com/api/v1</code></p>
 
 <p>The endpoints for the listed routes should be appended to the base endpoint to get the full endpoint.</p>
 <h3 id='user-routes'>User Routes</h3>
@@ -472,9 +472,9 @@ First, get Node.js v6.11.0 or later installed in your machine Ensure you have po
 <p>Sample Request</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="s2">"username"</span><span class="p">:</span><span class="s2">"oleoleole"</span><span class="p">,</span>
-  <span class="s2">"email"</span><span class="p">:</span><span class="s2">"oleoleole@gmail.com"</span><span class="p">,</span>
-  <span class="s2">"password"</span><span class="p">:</span><span class="s2">"oleoleole"</span>
+  <span class="s2">"username"</span><span class="p">:</span><span class="s2">"johndoe"</span><span class="p">,</span>
+  <span class="s2">"email"</span><span class="p">:</span><span class="s2">"johndoe@gmail.com"</span><span class="p">,</span>
+  <span class="s2">"password"</span><span class="p">:</span><span class="s2">"mypassword"</span>
 <span class="p">}</span>
 
 </code></pre>
@@ -485,15 +485,15 @@ First, get Node.js v6.11.0 or later installed in your machine Ensure you have po
     <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Signup Successful!"</span><span class="p">,</span>
     <span class="s2">"user"</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"id"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"oleoleole"</span><span class="p">,</span>
-        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"oleoleole@gmail.com"</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"johndoe"</span><span class="p">,</span>
+        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"johndoe@gmail.com"</span>
     <span class="p">},</span>
     <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo3LCJuYW1lIjoib2xlb2xlb2xlIiwiZW1haWwiOiJvbGVvbGVvbGVAZ21haWwuY29tIn0sImlhdCI6MTUxMzI1NDkwMSwiZXhwIjoxNTEzMzQxMzAxfQ.JxCIhtDH72ctdKZBYJgE-Q2Aa6InKrAWlAgT82UqkFo"</span>
 <span class="p">}</span>
 
 </code></pre><h3 id='request'>Request</h3>
 <ul>
-<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/signup</li>
+<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/v1/signup</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
 <h3 id='response'>Response</h3>
@@ -544,8 +544,8 @@ First, get Node.js v6.11.0 or later installed in your machine Ensure you have po
 <p>Sample Request</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="s2">"username"</span><span class="p">:</span><span class="s2">"oleoleole"</span><span class="p">,</span>
-  <span class="s2">"password"</span><span class="p">:</span><span class="s2">"oleoleole"</span>
+  <span class="s2">"username"</span><span class="p">:</span><span class="s2">"johndoe"</span><span class="p">,</span>
+  <span class="s2">"password"</span><span class="p">:</span><span class="s2">"mypassword"</span>
 <span class="p">}</span>
 
 </code></pre>
@@ -556,15 +556,15 @@ First, get Node.js v6.11.0 or later installed in your machine Ensure you have po
     <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Signin successful!"</span><span class="p">,</span>
     <span class="s2">"user"</span><span class="p">:</span> <span class="p">{</span>
         <span class="s2">"id"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"oleoleole"</span><span class="p">,</span>
-        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"oleoleole@gmail.com"</span>
+        <span class="s2">"name"</span><span class="p">:</span> <span class="s2">"johndoe"</span><span class="p">,</span>
+        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"johndoe@gmail.com"</span>
     <span class="p">},</span>
     <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo3LCJuYW1lIjoib2xlb2xlb2xlIiwiZW1haWwiOiJvbGVvbGVvbGVAZ21haWwuY29tIn0sImlhdCI6MTUxMzI2MTIwOCwiZXhwIjoxNTEzMzQ3NjA4fQ.60OV2dUqiVCFsBalsbPHjnE9sKSS2JNxgirZeWfRN9k"</span>
 <span class="p">}</span>
 
 </code></pre><h3 id='request-2'>Request</h3>
 <ul>
-<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/signin</li>
+<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/v1/signin</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
 <h3 id='response-2'>Response</h3>
@@ -572,7 +572,7 @@ First, get Node.js v6.11.0 or later installed in your machine Ensure you have po
 <li>Status: <code>200: OK</code></li>
 <li>Body <code>(application/json)</code></li>
 </ul>
-<h2 id='get-user-39-s-groups'>Get User&#39;s Groups</h2>
+<h2 id='get-groups-a-user-belongs-to'>Get groups a user belongs to</h2>
 <p>This endpoint retrieves a list of groups the user belongs to. It requires authentication.</p>
 <h3 id='response-parameters-3'>Response Parameters</h3>
 <table><thead>
@@ -625,7 +625,7 @@ First, get Node.js v6.11.0 or later installed in your machine Ensure you have po
 
 </code></pre><h3 id='request-3'>Request</h3>
 <ul>
-<li>Endpoint: : GET: https://postit-app-ralph.herokuapp.com/api/user/7/groups</li>
+<li>Endpoint: : GET: https://postit-app-ralph.herokuapp.com/api/v1/v1/user/7/groups</li>
 <li>Requires Authentication</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
@@ -697,7 +697,7 @@ It requires authentication.</p>
 
 </code></pre><h3 id='request-4'>Request</h3>
 <ul>
-<li>Endpoint: : GET: https://postit-app-ralph.herokuapp.com/api/search/users?searchTerm=a&amp;group=16&amp;limit=2&amp;offset=0</li>
+<li>Endpoint: : GET: https://postit-app-ralph.herokuapp.com/api/v1/v1/search/users?searchTerm=a&amp;group=16&amp;limit=2&amp;offset=0</li>
 <li>Requires Authentication</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
@@ -725,7 +725,7 @@ It requires authentication.</p>
 <p>Sample Request</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="s2">"email"</span><span class="p">:</span><span class="s2">"oleoleole@gmail.com"</span>
+  <span class="s2">"email"</span><span class="p">:</span><span class="s2">"johndoe@gmail.com"</span>
 <span class="p">}</span>
 
 </code></pre>
@@ -733,12 +733,12 @@ It requires authentication.</p>
 <p>Sample Response Body</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-    <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"An email has been sent to oleoleole@gmail.com with further instructions."</span>
+    <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"An email has been sent to johndoe@gmail.com with further instructions."</span>
 <span class="p">}</span>
 
 </code></pre><h3 id='request-5'>Request</h3>
 <ul>
-<li>Endpoint: : PUT: https://postit-app-ralph.herokuapp.com/api/forgotpassword</li>
+<li>Endpoint: : PUT: https://postit-app-ralph.herokuapp.com/api/v1/forgotpassword</li>
 <li>Requires Authentication</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
@@ -766,7 +766,7 @@ It requires authentication.</p>
 <p>Sample Request</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="s2">"password"</span><span class="p">:</span><span class="s2">"leoleoleo"</span>
+  <span class="s2">"password"</span><span class="p">:</span><span class="s2">"updatedpassword"</span>
 <span class="p">}</span>
 
 </code></pre>
@@ -788,8 +788,6 @@ It requires authentication.</p>
 <li>Status: <code>200: OK</code></li>
 <li>Body <code>(application/json)</code></li>
 </ul>
-<h3 id='errors'>Errors</h3>
-<p>The possible errors from the signup request are: - 400 (Bad request) - 500 (Internal server error) See the errors section for the complete list of error codes that the api server could return, and what they mean.</p>
 <h1 id='groups'>Groups</h1>
 <p>Communications in PostIt takes place in groups. 
 <aside class="notice">All group routes are protected, and so require authentication. You must set the x-auth token in the header to access them</aside></p>
@@ -847,7 +845,7 @@ It requires authentication.</p>
 <span class="p">}</span>
 </code></pre><h3 id='request'>Request</h3>
 <ul>
-<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group</li>
+<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
 <h3 id='response'>Response</h3>
@@ -898,7 +896,7 @@ It requires authentication.</p>
 <span class="p">}</span>
 </code></pre><h3 id='request-2'>Request</h3>
 <ul>
-<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/user</li>
+<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/user</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
 <h3 id='response-2'>Response</h3>
@@ -908,35 +906,15 @@ It requires authentication.</p>
 </ul>
 <h2 id='get-group-users'>Get Group Users</h2>
 <p>We can retrieve a list of all users belonging to a particular group</p>
-<h3 id='request-parameters-3'>Request Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>userId</td>
-<td>required</td>
-</tr>
-</tbody></table>
 
-<blockquote>
-<p>Sample Request</p>
-</blockquote>
-<pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
-  <span class="s2">"userId"</span><span class="p">:</span> <span class="mi">1</span>
-<span class="p">}</span>
-
-</code></pre>
 <blockquote>
 <p>Sample Response Body</p>
 </blockquote>
 <pre class="highlight javascript tab-javascript"><code><span class="p">[</span>
     <span class="p">{</span>
         <span class="s2">"id"</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
-        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"oleoleole@gmail.com"</span><span class="p">,</span>
-        <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"oleoleole"</span><span class="p">,</span>
+        <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"johndoe@gmail.com"</span><span class="p">,</span>
+        <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"johndoe"</span><span class="p">,</span>
         <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2017-12-14T12:34:59.991Z"</span><span class="p">,</span>
         <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2017-12-14T12:34:59.991Z"</span>
     <span class="p">},</span>
@@ -950,7 +928,7 @@ It requires authentication.</p>
 <span class="p">]</span>
 </code></pre><h3 id='request-3'>Request</h3>
 <ul>
-<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/users</li>
+<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/users</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
 <h3 id='response-3'>Response</h3>
@@ -960,7 +938,7 @@ It requires authentication.</p>
 </ul>
 <h2 id='add-user-to-groups-2'>Add User to Groups</h2>
 <p>Registered Users can be added to groups</p>
-<h3 id='request-parameters-4'>Request Parameters</h3>
+<h3 id='request-parameters-3'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1001,7 +979,7 @@ It requires authentication.</p>
 <span class="p">}</span>
 </code></pre><h3 id='request-4'>Request</h3>
 <ul>
-<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/user</li>
+<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/user</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
 <h3 id='response-4'>Response</h3>
@@ -1011,7 +989,7 @@ It requires authentication.</p>
 </ul>
 <h2 id='post-message'>Post Message</h2>
 <p>We can post a message to a particular group</p>
-<h3 id='request-parameters-5'>Request Parameters</h3>
+<h3 id='request-parameters-4'>Request Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1050,13 +1028,13 @@ It requires authentication.</p>
         <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2017-12-15T09:32:22.422Z"</span><span class="p">,</span>
         <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2017-12-15T09:32:22.422Z"</span><span class="p">,</span>
         <span class="s2">"User"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"oleoleole"</span>
+            <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"johndoe"</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </code></pre><h3 id='request-5'>Request</h3>
 <ul>
-<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/message</li>
+<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/message</li>
 <li>Body <code>(application/json)</code></li>
 </ul>
 <h3 id='response-5'>Response</h3>
@@ -1080,7 +1058,7 @@ It requires authentication.</p>
         <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2017-12-15T09:32:22.422Z"</span><span class="p">,</span>
         <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2017-12-15T09:32:22.422Z"</span><span class="p">,</span>
         <span class="s2">"User"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"oleoleole"</span>
+            <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"johndoe"</span>
         <span class="p">}</span>
     <span class="p">},</span>
     <span class="p">{</span>
@@ -1092,13 +1070,13 @@ It requires authentication.</p>
         <span class="s2">"createdAt"</span><span class="p">:</span> <span class="s2">"2017-12-15T09:34:27.871Z"</span><span class="p">,</span>
         <span class="s2">"updatedAt"</span><span class="p">:</span> <span class="s2">"2017-12-15T09:34:27.871Z"</span><span class="p">,</span>
         <span class="s2">"User"</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"oleoleole"</span>
+            <span class="s2">"username"</span><span class="p">:</span> <span class="s2">"johndoe"</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">]</span>
 </code></pre><h3 id='request-6'>Request</h3>
 <ul>
-<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/messages</li>
+<li>Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/messages</li>
 <li>Body <code>(application/json)</code></li>
 <li>Requires Authentication</li>
 </ul>
@@ -1134,7 +1112,7 @@ It requires authentication.</p>
 </tr>
 <tr>
 <td>403</td>
-<td>Forbidden -- You are prohibited from accessing that resouce.</td>
+<td>Forbidden -- You are prohibited from accessing that resource.</td>
 </tr>
 <tr>
 <td>404</td>

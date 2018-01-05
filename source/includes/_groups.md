@@ -101,13 +101,6 @@ message   | A descriptive notification of the outcome of the request
 
 We can retrieve a list of all users belonging to a particular group
 
-### Request Parameters
-
-Parameter  | Description
----------- | ------------
-userId     | required
-
-
 > Sample Response Body
 
 ```javascript

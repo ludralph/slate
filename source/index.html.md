@@ -22,7 +22,7 @@ Welcome to the PostIt API - A RESTful web service that allow users create accoun
 >Base API Endpoint
 
 ```
-https://postit-app-ralph.herokuapp.com/api
+https://postit-app-ralph.herokuapp.com/api/v1
 
 ```
 
@@ -56,7 +56,7 @@ Some endpoints (routes) in this API are protected. They require an access token 
 
 # Endpoints Summary
 
-Base Endpoint: `https://postit-app-ralph.herokuapp.com/api`
+Base Endpoint: `https://postit-app-ralph.herokuapp.com/api/v1`
 
 The endpoints for the listed routes should be appended to the base endpoint to get the full endpoint.
 

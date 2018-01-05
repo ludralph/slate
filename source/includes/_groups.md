@@ -45,7 +45,7 @@ group     | An object that contains the id, name, createdAt and UpdatedAt proper
 ```
 
 ### Request
-  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group
+  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group
   * Body `(application/json)`
 
 ### Response
@@ -89,7 +89,7 @@ message   | A descriptive notification of the outcome of the request
 ```
 
 ### Request
-  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/user
+  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/user
   * Body `(application/json)`
 
 ### Response
@@ -122,8 +122,8 @@ userId     | required
 [
     {
         "id": 7,
-        "email": "oleoleole@gmail.com",
-        "username": "oleoleole",
+        "email": "johndoe@gmail.com",
+        "username": "johndoe",
         "createdAt": "2017-12-14T12:34:59.991Z",
         "updatedAt": "2017-12-14T12:34:59.991Z"
     },
@@ -138,7 +138,7 @@ userId     | required
 ```
 
 ### Request
-  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/users
+  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/users
   * Body `(application/json)`
 
 ### Response
@@ -182,7 +182,7 @@ message   | A descriptive notification of the outcome of the request
 ```
 
 ### Request
-  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/user
+  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/user
   * Body `(application/json)`
 
 ### Response
@@ -224,14 +224,14 @@ priority   | required
         "updatedAt": "2017-12-15T09:32:22.422Z",
         "createdAt": "2017-12-15T09:32:22.422Z",
         "User": {
-            "username": "oleoleole"
+            "username": "johndoe"
         }
     }
 }
 ```
 
 ### Request
-  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/message
+  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/message
   * Body `(application/json)`
 
 ### Response
@@ -257,7 +257,7 @@ We can retrieve a list of messages that has been posted to a group.
         "createdAt": "2017-12-15T09:32:22.422Z",
         "updatedAt": "2017-12-15T09:32:22.422Z",
         "User": {
-            "username": "oleoleole"
+            "username": "johndoe"
         }
     },
     {
@@ -269,14 +269,14 @@ We can retrieve a list of messages that has been posted to a group.
         "createdAt": "2017-12-15T09:34:27.871Z",
         "updatedAt": "2017-12-15T09:34:27.871Z",
         "User": {
-            "username": "oleoleole"
+            "username": "johndoe"
         }
     }
 ]
 ```
 
 ### Request
-  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/group/16/messages
+  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/group/16/messages
   * Body `(application/json)`
   * Requires Authentication
 

@@ -26,9 +26,9 @@ token     | The jwt token returned from the server that will be used to set the 
 
 ```javascript
 {
-  "username":"oleoleole",
-  "email":"oleoleole@gmail.com",
-  "password":"oleoleole"
+  "username":"johndoe",
+  "email":"johndoe@gmail.com",
+  "password":"mypassword"
 }
 
 ```
@@ -41,8 +41,8 @@ token     | The jwt token returned from the server that will be used to set the 
     "message": "Signup Successful!",
     "user": {
         "id": 7,
-        "name": "oleoleole",
-        "email": "oleoleole@gmail.com"
+        "name": "johndoe",
+        "email": "johndoe@gmail.com"
     },
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo3LCJuYW1lIjoib2xlb2xlb2xlIiwiZW1haWwiOiJvbGVvbGVvbGVAZ21haWwuY29tIn0sImlhdCI6MTUxMzI1NDkwMSwiZXhwIjoxNTEzMzQxMzAxfQ.JxCIhtDH72ctdKZBYJgE-Q2Aa6InKrAWlAgT82UqkFo"
 }
@@ -50,7 +50,7 @@ token     | The jwt token returned from the server that will be used to set the 
 ```
 
 ### Request
-  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/signup
+  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/v1/signup
   * Body `(application/json)`
 
 ### Response
@@ -79,8 +79,8 @@ token     | The jwt token returned from the server that will be used to set the 
 
 ```javascript
 {
-  "username":"oleoleole",
-  "password":"oleoleole"
+  "username":"johndoe",
+  "password":"mypassword"
 }
 
 ```
@@ -92,8 +92,8 @@ token     | The jwt token returned from the server that will be used to set the 
     "message": "Signin successful!",
     "user": {
         "id": 7,
-        "name": "oleoleole",
-        "email": "oleoleole@gmail.com"
+        "name": "johndoe",
+        "email": "johndoe@gmail.com"
     },
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo3LCJuYW1lIjoib2xlb2xlb2xlIiwiZW1haWwiOiJvbGVvbGVvbGVAZ21haWwuY29tIn0sImlhdCI6MTUxMzI2MTIwOCwiZXhwIjoxNTEzMzQ3NjA4fQ.60OV2dUqiVCFsBalsbPHjnE9sKSS2JNxgirZeWfRN9k"
 }
@@ -101,14 +101,14 @@ token     | The jwt token returned from the server that will be used to set the 
 ```
 
 ### Request
-  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/signin
+  * Endpoint: : POST: https://postit-app-ralph.herokuapp.com/api/v1/v1/signin
   * Body `(application/json)`
 
 ### Response
   * Status: `200: OK`
   * Body `(application/json)`
 
-## Get User's Groups
+## Get groups a user belongs to
 
 This endpoint retrieves a list of groups the user belongs to. It requires authentication.
 
@@ -147,7 +147,7 @@ updatedAt | Last time the user record was modified.
 
 ```
 ### Request
-  * Endpoint: : GET: https://postit-app-ralph.herokuapp.com/api/user/7/groups
+  * Endpoint: : GET: https://postit-app-ralph.herokuapp.com/api/v1/v1/user/7/groups
   * Requires Authentication
   * Body `(application/json)`
 
@@ -199,7 +199,7 @@ offset     | 0  | sets the offset
 
 ```
 ### Request
-  * Endpoint: : GET: https://postit-app-ralph.herokuapp.com/api/search/users?searchTerm=a&group=16&limit=2&offset=0
+  * Endpoint: : GET: https://postit-app-ralph.herokuapp.com/api/v1/v1/search/users?searchTerm=a&group=16&limit=2&offset=0
   * Requires Authentication
   * Body `(application/json)`
 
@@ -219,7 +219,7 @@ email |   User's email address
 
 ```javascript
 {
-  "email":"oleoleole@gmail.com"
+  "email":"johndoe@gmail.com"
 }
 
 ```
@@ -228,12 +228,12 @@ email |   User's email address
 
 ```javascript
 {
-    "message": "An email has been sent to oleoleole@gmail.com with further instructions."
+    "message": "An email has been sent to johndoe@gmail.com with further instructions."
 }
 
 ```
 ### Request
-  * Endpoint: : PUT: https://postit-app-ralph.herokuapp.com/api/forgotpassword
+  * Endpoint: : PUT: https://postit-app-ralph.herokuapp.com/api/v1/forgotpassword
   * Requires Authentication
   * Body `(application/json)`
 
@@ -254,7 +254,7 @@ password |   User's password
 
 ```javascript
 {
-  "password":"leoleoleo"
+  "password":"updatedpassword"
 }
 
 ```
@@ -275,7 +275,3 @@ password |   User's password
 ### Response
   * Status: `200: OK`
   * Body `(application/json)`
-
-### Errors
-The possible errors from the signup request are: - 400 (Bad request) - 500 (Internal server error) See the errors section for the complete list of error codes that the api server could return, and what they mean.
-

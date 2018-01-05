@@ -107,14 +107,6 @@ Parameter  | Description
 ---------- | ------------
 userId     | required
 
-> Sample Request
-
-```javascript
-{
-  "userId": 1
-}
-
-```
 
 > Sample Response Body
 
